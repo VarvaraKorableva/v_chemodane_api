@@ -1,4 +1,4 @@
-import { db } from "../config/pg.config.js"
+import { db } from "../db.js"
 import bcrypt from 'bcrypt'
 
 export const _createUser = async (username, email, password, subscribed, phone, ) => {
