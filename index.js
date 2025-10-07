@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-//import { users_router } from "./routes/users.routes.js"
+import { users_router } from "./routes/users.routes.js"
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ app.use(cors({
   ],
 }));
 
-//app.use("/users", users_router);
+app.use("/users", users_router);
 
 
 app.listen(process.env.PORT || 8080, () => {
