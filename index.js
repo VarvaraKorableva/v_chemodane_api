@@ -15,6 +15,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'https://localhost:3000',
+    'https://vchemodane.com/',
+    'http://vchemodane.com/'
   ],
 }));
 
