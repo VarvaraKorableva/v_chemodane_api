@@ -7,7 +7,7 @@ export const _createUser = async (username, email, password, subscribed, phone, 
         if (existingUser) {
           throw new Error("Email is already registered");
         } else {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        const hashedPassword = password ? await bcrypt.hash(password, 10) : null;
         const result = await db("users").insert({
           username,
           email,
@@ -29,13 +29,12 @@ export const _getAllUsers = () => {
       .orderBy("id");
   };
 
-// user.model.js
-export const _setSubscription = async (userId, value) => {
+  export const _unsubscribeUserByEmail = async (email) => {
     try {
       const result = await db("users")
-        .where({ id: userId })
-        .update({ subscribed: value })
-        .returning(["id", "username", "email", "phone", "subscribed", "created_at"]);
+        .where({ email })
+        .update({ subscribed: false })
+        .returning(["id", "username", "email", "subscribed"]);
   
       if (!result.length) {
         throw new Error("Пользователь не найден");
@@ -46,4 +45,3 @@ export const _setSubscription = async (userId, value) => {
       throw new Error(error.message);
     }
   };
-  

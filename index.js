@@ -13,11 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({
   credentials: true,
   origin: [
-    '*',
     'http://localhost:3000',
-    'https://localhost:3000',
-    'https://vchemodane.com/',
-    'http://vchemodane.com/',
+    'https://vchemodane.com',
+    'http://vchemodane.com',
+    'https://v-chemodane-api.onrender.com'
   ],
 }));
 
